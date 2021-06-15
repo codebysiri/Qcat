@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" th:href="@{/style.css}">
+
+  <link rel="icon" th:href="@{/img/core-img/favicon.ico}">
+  <style>
+    table {
+      margin: auto;
+      text-align: center;
+    }
+  </style>
+
+
+  <!-- ##### All Javascript Script ##### -->
+  <!-- jQuery-2.2.4 js -->
+  <script th:src="@{/js/jquery/jquery-2.2.4.min.js}"></script>
+
+
+  <title>Title</title>
+</head>
+<body>
+<th:block th:replace="/layout/header.html :: header"></th:block>
+
+<form action="/member/signup" method="post">
+  <table>
+      <th>
+        <label> 아이디 </label>
+      </th>
+      <td>
+        <input type="text" name="login_id">
+        <button class="login_id" type="button" id="login_id" onclick="fn_IdCheck();" value="N"> 중복확인 </button>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <label> 비밀번호 </label>
+      </th>
+      <td>
+        <input type="password" name="password">
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <label> 이름 </label>
+      </th>
+      <td>
+        <input type="text" name="name" >
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <label> 이메일 </label>
+      </th>
+      <td>
+        <input type="email" name="email">
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <label> 휴대폰 번호 </label>
+      </th>
+      <td>
+        <input type="text" name="phone">
+        <button class="phone" type="button" id="phone" onclick="fn_phoneCheck();" value="N"> 중복확인 </button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button type="submit">가입하기</button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+
+<th:block th:replace="/layout/footer.html :: footer"></th:block>
+
+<script>
+  function fn_IdCheck() {
+    $.ajax({
+      url : "/member/IdCheck",
+      type : "POST",
+      dataType :"JSON",
+      data : {"login_id" : $("#login_id").val()},
+      success : function (data) {
+        if(data == 1) {
+          alert("중복된 닉네임입니다.");
+        } else if (data == 0) {
+          $("#login_id").attr("value", "Y");
+          alert("사용 가능한 닉네임입니다.")
+        }
+      }
+
+    })
+  }
+  function fn_phoneCheck() {
+    $.ajax({
+      url : "/member/phoneCheck",
+      type : "POST",
+      dataType :"JSON",
+      data : {"phone" : $("#phone").val()},
+      success : function (data) {
+        if(data == 1) {
+          alert("중복된 휴대폰 번호입니다.");
+        } else if (data == 0) {
+          $("#phone").attr("value", "Y");
+          alert("사용 가능한 휴대폰 번호입니다.")
+        }
+      }
+
+    })
+  }
+</script>
+
+<!-- Popper js -->
+<script th:src="@{/js/bootstrap/popper.min.js}"></script>
+<!-- Bootstrap js -->
+<script th:src="@{/js/bootstrap/bootstrap.min.js}"></script>
+<!-- All Plugins js -->
+<script th:src="@{/js/plugins/plugins.js}"></script>
+<!-- Active js -->
+<script th:src="@{/js/active.js}"></script>
+</body>
+</html>
