@@ -1,6 +1,5 @@
 package com.Qcat.Qcat.member;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,11 +17,17 @@ public class MemberRegisterController {
 
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/idCheck", method = RequestMethod.POST)
+    public int idCheck(String login_id) throws Exception {
+        int result = memberService.phoneCheck(login_id);
+        return result;
+    }
 
     @ResponseBody
     @RequestMapping(value = "/phoneCheck", method = RequestMethod.POST)
-    public int phoneCheck(String phone_number) throws Exception {
-        int result = memberService.phoneCheck(phone_number);
+    public int phoneCheck(String phone) throws Exception {
+        int result = memberService.phoneCheck(phone);
         return result;
     }
 

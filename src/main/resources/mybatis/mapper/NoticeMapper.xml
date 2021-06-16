@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Qcat.Qcat.notice.NoticeRepository">
+
+<!--    PAGING-->
+    <select id="getTotal" parameterType="int" resultType="java.util.HashMap">
+        SELECT COUNT(*) AS total
+        FROM noticeBoard
+    </select>
+    <select id="getNotices" parameterType="Integer" resultType="java.util.HashMap">
+        SELECT *,
+               (SELECT COUNT(*)
+                FROM noticeReply nr
+                WHERE nr.notice_id = nb.notice_id
+                )
+        FROM noticeBoard nb
+        ORDER BY nb.notice_id DESC
+        LIMIT 20 OFFSET #{notice_page}
+    </select>
+
+<!--    SEARCHING-->
+    <select id="searchNotices" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        SELECT *
+        FROM noticeBoard
+        WHERE title LIKE CONCAT("%", #{value} ,"%")
+        ORDER BY notice_id DESC
+    </select>
+
+<!--    NOTICE CRUD-->
+    <select id="getNotice" parameterType="int" resultType="java.util.HashMap">
+        SELECT *
+        FROM noticeBoard
+        WHERE notice_id = #{notice_id}
+    </select>
+    <insert id="insertNotice" parameterType="java.util.HashMap">
+        INSERT INTO noticeBoard (title, content, login_id)
+        VALUES (#{title}, #{content}, #{login_id})
+    </insert>
+    <update id="updateNotice" parameterType="java.util.HashMap">
+        UPDATE noticeBoard
+        SET title = #{title}, content = #{content}
+        WHERE notice_id = #{notice_id}
+    </update>
+    <delete id="deleteNotice" parameterType="int">
+        DELETE FROM noticeBoard
+        WHERE notice_id = #{notice_id}
+    </delete>
+
+<!--    REPLY CRUD-->
+    <select id="getReply" parameterType="int" resultType="java.util.HashMap">
+        SELECT *
+        FROM (SELECT nr.reply_id, nr.board_id, m.login_id, nr.content, nr.regdate
+              FROM noticeReply nr, member m
+              WHERE n.writer_id = m.id) A
+        WHERE notice_id= #{notice_id}
+        ORDER BY reply_id;
+    </select>
+    <insert id="insertReply">
+        INSERT INTO noticeReply (reply_id, login_id, content)
+        VALUES (#{reply_id}, #{login_id}, #{content})
+    </insert>
+    <update id="updateReply">
+        UPDATE noticeReply
+        SET content = #{content}
+        WHERE reply_id = #{reply_id}
+    </update>
+    <delete id="deleteReply">
+        DELETE FROM noticeReply
+        WHERE reply_id = #{reply_id}
+    </delete>
+
+</mapper>

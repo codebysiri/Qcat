@@ -30,7 +30,7 @@ public class MemberLoginController {
 
 
     // login session
-    @PostMapping("/user/login")
+    @PostMapping("/login")
     public String loginPOST(MemberDTO memberDTO, HttpServletRequest request) throws Exception {
 
         HttpSession httpSession = request.getSession();
