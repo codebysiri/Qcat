@@ -31,21 +31,16 @@ public class MemberLoginController {
 
     // login session
     @PostMapping("/user/login")
-    public String loginPOST(MemberDTO memberDTO, HttpServletRequest request) {
+    public String loginPOST(MemberDTO memberDTO, HttpServletRequest request) throws Exception {
 
-        HttpSession session = request.getSession();
-
-        Map<String,String> memberInform = memberService.login(memberDTO);
-        System.out.println(memberDTO);
-        System.out.println(memberInform);
-        if(memberInform.get("login_id").equals(memberDTO.getLogin_id()) && memberInform.get("password").equals(memberDTO.getPassword())){
-            session.setAttribute("name", memberInform.get("name"));
-            System.out.println("세션 생성");
-            return "/member/myPage";
-        }else{
-            System.out.println("로그인 실패");
-            return "redirect:./";
+        HttpSession httpSession = request.getSession();
+        Map<String, String> memberInform = memberService.login(memberDTO);
+        if (memberInform.get("login_id").equals(memberDTO.getLogin_id()) &&
+            memberInform.get("password").equals(memberDTO.getPassword())) {
+            httpSession.setAttribute("name", memberInform.get("name"));
+            return "member/myPage";
         }
+        return "redirect:/member/login";
     }
 
     // logout

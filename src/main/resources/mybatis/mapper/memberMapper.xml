@@ -23,7 +23,7 @@
     <select id="login" parameterType="com.Qcat.Qcat.member.MemberDTO" resultType="java.util.HashMap">
         SELECT *
         FROM member
-        WHERE member_id = #{member_id}
+        WHERE login_id = #{login_id}
     </select>
 
     <!--    MyPage-->
