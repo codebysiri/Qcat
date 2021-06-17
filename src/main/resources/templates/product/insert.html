@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="icon" th:href="@{/img/core-img/favicon.ico}">
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script th:src="@{/js/jquery/jquery-2.2.4.min.js}"></script>
+    <title>Title</title>
+</head>
+<body>
+<th:block th:replace="/layout/header.html :: header"></th:block>
+<div class="container">
+    <form action="/product/insert" method="POST">
+        <div class="form_items">
+            <table>
+                <tr>
+                    <th>
+                        <img id="show_img" height="240px">
+                    </th>
+                    <td>
+                        <input id="img" type="file" name="img" accept=".jpg,.jpeg,.png,.gif">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label> category </label>
+                    </th>
+                    <td>
+                        <input type="text" name="category">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label> name </label>
+                    </th>
+                    <td>
+                        <input type="text" name="product_name">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label> content </label>
+                    </th>
+                    <td>
+                        <input type="text" name="content">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label> price </label>
+                    </th>
+                    <td>
+                        <input type="text" name="price">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit"> 저장하기 </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+
+<th:block th:replace="/layout/footer.html :: footer"></th:block>
+
+
+<!-- Popper js -->
+<script th:src="@{/js/bootstrap/popper.min.js}"></script>
+<!-- Bootstrap js -->
+<script th:src="@{/js/bootstrap/bootstrap.min.js}"></script>
+<!-- All Plugins js -->
+<script th:src="@{/js/plugins/plugins.js}"></script>
+<!-- Active js -->
+<script th:src="@{/js/active.js}"></script>
+</body>
+</html>

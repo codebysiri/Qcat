@@ -1,4 +1,4 @@
-package com.Qcat.Qcat.notice.repository;
+package com.Qcat.Qcat.notice.controller;
 
 import com.Qcat.Qcat.notice.service.NoticeService;
 import com.google.gson.JsonObject;

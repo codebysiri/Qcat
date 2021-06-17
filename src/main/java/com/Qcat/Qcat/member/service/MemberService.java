@@ -2,6 +2,7 @@ package com.Qcat.Qcat.member.service;
 
 import com.Qcat.Qcat.member.dto.MemberDTO;
 
+import java.util.List;
 import java.util.Map;
 
 public interface MemberService {
@@ -15,6 +16,8 @@ public interface MemberService {
     Map<String, String> login(MemberDTO memberDTO);
 
     // myPage
+    List<Map<String, Object>> storeList(int member_id);
+
 
 
 }

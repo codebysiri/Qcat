@@ -37,12 +37,15 @@ public class MemberLoginController {
 
         HttpSession httpSession = request.getSession();
         Map<String, String> memberInform = memberService.login(memberDTO);
+
         if (memberInform.get("login_id").equals(memberDTO.getLogin_id()) &&
             memberInform.get("password").equals(memberDTO.getPassword())) {
             httpSession.setAttribute("name", memberInform.get("name"));
-            return "member/myPage";
+            httpSession.setAttribute("member_id", memberInform.get("member_id"));
+            httpSession.setAttribute("role", memberInform.get("role"));
+            return "member/loginSuccess";
         }
-        return "redirect:/member/login";
+        return "redirect:./";
     }
 
     // logout

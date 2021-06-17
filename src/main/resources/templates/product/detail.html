@@ -12,6 +12,47 @@
     <script th:src="@{/js/jquery/jquery-2.2.4.min.js}"></script>
     <title>Title</title>
 </head>
+<style>
+    .container{
+        display: flex;
+        justify-content: center;
+    }
+    .items{
+        width:1000px;
+        background: silver;
+    }
+    #content{
+        border:1px solid;
+        background: white;
+        padding:20px;
+    }
+    .reply_items{
+        padding:20px;
+    }
+    .reply_item{
+        border-bottom:1px solid antiquewhite;
+    }
+    .reply_write, .reply_content{
+        padding:10px;
+    }
+    #replyName{
+        padding:3px 3px 3px 10px;
+    }
+    .reply_date, .reply_delete, .reply_update{
+        padding-left:5px;
+    }
+    .reply_delete, .reply_update{
+        color:#E0475B;
+        cursor: pointer;
+    }
+    .reply_editor{
+        display:none;
+    }
+    .reply_item:hover{
+        transition: all 0.5s;
+        background: lightgray;
+    }
+</style>
 <body>
 <th:block th:replace="/layout/header.html :: header"></th:block>
 

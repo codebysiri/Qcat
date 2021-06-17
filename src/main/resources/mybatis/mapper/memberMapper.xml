@@ -27,5 +27,10 @@
     </select>
 
     <!--    MyPage-->
-
+    <select id="storeList" parameterType="int" resultType="java.util.HashMap">
+        SELECT *
+        FROM member m JOIN store s
+        ON m.member_id = s.member_id
+        WHERE m.member_id = #{member_id}
+    </select>
 </mapper>

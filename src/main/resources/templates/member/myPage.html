@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -22,8 +22,24 @@
 <body>
 <th:block th:replace="/layout/header.html :: header"></th:block>
 
-로그인 성공 !!!
 <span th:text="${session.name}"> 님의 마이페이지!!! </span>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th> 가맹점 번호 </th>
+                <th> 가맹점 이름 </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="store : ${storeList}">
+                <td th:text="${store.store_id}" ></td>
+                <td th:href="@{/product/{store_id}}" th:text="${store.store_name}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 </body>
 <th:block th:replace="/layout/footer.html :: footer"></th:block>

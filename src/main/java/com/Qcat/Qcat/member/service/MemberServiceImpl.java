@@ -6,6 +6,7 @@ import com.Qcat.Qcat.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -42,6 +43,9 @@ public class MemberServiceImpl implements MemberService {
     }
 
     // MyPage
-
+    @Override
+    public List<Map<String, Object>> storeList(int member_id) {
+        return memberRepository.storeList(member_id);
+    }
 
 }

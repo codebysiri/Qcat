@@ -46,7 +46,7 @@ public class NoticeController {
         return "/notice/noticeDetail";
     }
 
-    @GetMapping("/notice/insert")
+    @GetMapping("/notice/noticeInsert")
     public String insertGET(HttpServletRequest request) {
 
         HttpSession httpsession = request.getSession();
@@ -55,10 +55,10 @@ public class NoticeController {
             String referer = request.getHeader("Referer");
             return "redirect: " + referer;
         }
-        return "/notice/insert";
+        return "/notice/noticeInsert";
     }
 
-    @PostMapping("/notice/insert")
+    @PostMapping("/notice/noticeInsert")
     public String insertPOST(@RequestParam Map<String, String> insertValue) {
 
         noticeService.insertNotice(insertValue);

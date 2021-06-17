@@ -3,6 +3,7 @@ package com.Qcat.Qcat.member.repository;
 import com.Qcat.Qcat.member.dto.MemberDTO;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
 import java.util.Map;
 
 @Mapper
@@ -17,6 +18,6 @@ public interface MemberRepository {
     Map<String, String> login(MemberDTO memberDTO);
 
     // MyPage
-
+    List<Map<String, Object>> storeList(int member_id);
 
 }
