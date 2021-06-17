@@ -1,5 +1,7 @@
-package com.Qcat.Qcat.notice;
+package com.Qcat.Qcat.notice.controller;
 
+import com.Qcat.Qcat.notice.service.NoticeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,7 @@ import java.util.Map;
 @Controller
 public class NoticeController {
 
+    @Autowired
     NoticeService noticeService;
 
     // PAGING

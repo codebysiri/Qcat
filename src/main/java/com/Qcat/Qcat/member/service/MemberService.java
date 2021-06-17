@@ -1,21 +1,20 @@
-package com.Qcat.Qcat.member;
+package com.Qcat.Qcat.member.service;
 
-import org.apache.ibatis.annotations.Mapper;
+import com.Qcat.Qcat.member.dto.MemberDTO;
 
 import java.util.Map;
 
-@Mapper
-public interface MemberRepository {
+public interface MemberService {
 
-    // JOIN
+    // join
     void register(MemberDTO memberDTO) throws Exception;
     int idCheck(String login_id) throws Exception;
     int phoneCheck(String phone) throws Exception;
 
-    // Login
+    // login
     Map<String, String> login(MemberDTO memberDTO);
 
-    // MyPage
+    // myPage
 
 
 }

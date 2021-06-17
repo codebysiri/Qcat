@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.Qcat.Qcat.member.MemberRepository">
+<mapper namespace="com.Qcat.Qcat.member.repository.MemberRepository">
 
     <!--    Join-->
     <insert id="register">
         INSERT INTO member (member_id, login_id, password, name, email, phone)
         VALUES (#{member_id}, #{login_id}, #{password}, #{name}, #{email}, #{phone})
     </insert>
-    <select id="idCheck" parameterType="com.Qcat.Qcat.member.MemberDTO" resultType="int">
+    <select id="idCheck" parameterType="com.Qcat.Qcat.member.dto.MemberDTO" resultType="int">
         SELECT COUNT(*)
         FROM member
         WHERE login_id = #{login_id}
     </select>
-    <select id="phoneCheck" parameterType="com.Qcat.Qcat.member.MemberDTO" resultType="int">
+    <select id="phoneCheck" parameterType="com.Qcat.Qcat.member.dto.MemberDTO" resultType="int">
         SELECT COUNT(*)
         FROM member
         WHERE phone = #{phone}
     </select>
 
     <!--    Login-->
-    <select id="login" parameterType="com.Qcat.Qcat.member.MemberDTO" resultType="java.util.HashMap">
+    <select id="login" parameterType="com.Qcat.Qcat.member.dto.MemberDTO" resultType="java.util.HashMap">
         SELECT *
         FROM member
         WHERE login_id = #{login_id}

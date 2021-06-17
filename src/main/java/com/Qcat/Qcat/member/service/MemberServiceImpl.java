@@ -1,5 +1,8 @@
-package com.Qcat.Qcat.member;
+package com.Qcat.Qcat.member.service;
 
+import com.Qcat.Qcat.member.dto.MemberDTO;
+import com.Qcat.Qcat.member.repository.MemberRepository;
+import com.Qcat.Qcat.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

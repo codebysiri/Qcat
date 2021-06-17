@@ -1,4 +1,4 @@
-package com.Qcat.Qcat.member;
+package com.Qcat.Qcat.member.dto;
 
 import lombok.*;
 

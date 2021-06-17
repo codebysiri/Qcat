@@ -1,7 +1,9 @@
-package com.Qcat.Qcat.notice;
+package com.Qcat.Qcat.notice.repository;
 
+import com.Qcat.Qcat.notice.service.NoticeService;
 import com.google.gson.JsonObject;
 import org.apache.commons.io.FileUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,6 +17,7 @@ import java.util.UUID;
 @RestController
 public class NoticeRestController {
 
+    @Autowired
     NoticeService noticeService;
 
     // SEARCHING

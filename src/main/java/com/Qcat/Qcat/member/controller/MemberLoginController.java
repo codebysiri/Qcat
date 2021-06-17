@@ -1,5 +1,7 @@
-package com.Qcat.Qcat.member;
+package com.Qcat.Qcat.member.controller;
 
+import com.Qcat.Qcat.member.service.MemberService;
+import com.Qcat.Qcat.member.dto.MemberDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,7 +26,7 @@ public class MemberLoginController {
 
     // login page
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginGET(@ModelAttribute("memberDTO")MemberDTO memberDTO) {
+    public String loginGET(@ModelAttribute("memberDTO") MemberDTO memberDTO) {
         return "/member/login";
     }
 

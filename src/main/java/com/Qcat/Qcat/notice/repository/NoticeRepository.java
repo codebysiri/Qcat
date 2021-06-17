@@ -1,9 +1,13 @@
-package com.Qcat.Qcat.notice;
+package com.Qcat.Qcat.notice.repository;
+
+
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 import java.util.Map;
 
-public interface NoticeService {
+@Mapper
+public interface NoticeRepository {
 
     // PAGING
     Double getTotal();
