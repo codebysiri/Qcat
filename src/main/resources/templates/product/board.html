@@ -88,9 +88,9 @@
 
 
 <script>
-    const write_btn = document.getElementById('write');
+    const write_btn = document.getElementById('insert');
     write_btn.addEventListener('click', () => {
-        location.href = '/notice/write';
+        location.href = '/product/insert';
     });
 
     const search = document.getElementById('search');
@@ -107,14 +107,14 @@
     function searchValue(){
         let searchValue = search.value;
 
-        $.post('/notice/product', {value:searchValue})
+        $.post('/product/search', {value:searchValue})
             .done((data) =>{
                 let html="";
                 const tbody = document.getElementById('tbody');
                 for(onearr of data){
                     html = html +'<tr>' +
                         '<td>'+onearr.product_id+'</td>' +
-                        '<td><a href="/product/detail/'+onearr.product_id+'">'+onearr.title+'</a></td>' +
+                        '<td><a href="/product/detail/'+onearr.product_id+'">'+onearr.product_name+'</a></td>' +
                         '<td>'+onearr.writer+'</td>' +
                         '<td>'+onearr.regdate.substring(0,10)+'</td>' +
                         '</tr>';

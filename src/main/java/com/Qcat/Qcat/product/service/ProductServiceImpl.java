@@ -22,6 +22,10 @@ public class ProductServiceImpl implements ProductService{
     public List<Map<String, Object>> getProducts(Integer product_page) {
         return productRepository.getProducts(product_page);
     }
+    @Override
+    public List<Map<String, Object>> getStore(Integer store_id) {
+        return productRepository.getStore(store_id);
+    }
 
     // SEARCHING
     public List<Map<String, Object>> searchProducts(Map<String, String> searchValue) {

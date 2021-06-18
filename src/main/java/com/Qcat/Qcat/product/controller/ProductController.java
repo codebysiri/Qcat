@@ -1,5 +1,6 @@
 package com.Qcat.Qcat.product.controller;
 
+import com.Qcat.Qcat.member.service.MemberService;
 import com.Qcat.Qcat.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -19,16 +21,18 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @GetMapping(value = {"/product/{product_page}", "/product"})
-    public String getProduct(@PathVariable(required = false) Integer product_page, Model model) {
+    @GetMapping(value = {"/product/{store_id}/{product_page}", "/product"})
+    public String getProduct(@PathVariable(required = false) Integer store_id, @PathVariable(required = false) Integer product_page, Model model) {
         Double total = productService.getTotal();
         int totalPage = (int) Math.ceil(total / 20);
 
         if(product_page != null) {
+            model.addAttribute("store", productService.getStore(store_id));
             model.addAttribute("products", productService.getProducts((product_page - 1) * 10 * 2));
             model.addAttribute("totalPage", totalPage);
         } else {
             product_page = 1;
+            model.addAttribute("store", productService.getStore(store_id));
             model.addAttribute("products", productService.getProducts((product_page - 1) * 10 * 2));
             model.addAttribute("totalPage", totalPage);
         }

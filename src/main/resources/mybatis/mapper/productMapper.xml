@@ -7,12 +7,18 @@
     <select id="getProducts" parameterType="Integer" resultType="java.util.HashMap">
         SELECT *
         FROM product
+        WHERE store_id = #{store_id}
         ORDER BY product_id DESC
         LIMIT 20 OFFSET #{product_page}
     </select>
     <select id="getTotal" resultType="Double">
         SELECT COUNT(*) as total
         FROM product
+    </select>
+    <select id="getStore" parameterType="Integer" resultType="java.util.HashMap">
+        SELECT *
+        FROM product
+        WHERE store_id = #{store_id}
     </select>
 
 <!--    SEARCHING-->

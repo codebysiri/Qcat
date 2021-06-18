@@ -8,6 +8,7 @@ public interface ProductService {
     // PAGING
     Double getTotal();
     List<Map<String, Object>> getProducts(Integer product_page);
+    List<Map<String, Object>> getStore(Integer store_id);
 
     // SEARCHING
     List<Map<String, Object>> searchProducts(Map<String, String> searchValue);
